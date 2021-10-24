@@ -46,7 +46,7 @@ export default function Home() {
     setLoading(true);
 
     if (searchTerm === "") {
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${
+      endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${
         currentPage + 1
       }`;
     } else {
