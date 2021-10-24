@@ -15,18 +15,9 @@ export default function Movie(props) {
   const [loading, setloading] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem(`${props.match.params.movieId}`)) {
-      const state = JSON.parse(
-        localStorage.getItem(`${props.match.params.movieId}`)
-      );
-      setmovie(state.movie);
-      setactors(state.actors);
-      setdirectors(state.directors);
-    } else {
-      setloading(true);
-      const endpoint = `${API_URL}movie/${props.match.params.movieId}?api_key=${API_KEY}&language-en-US`;
-      fetchData(endpoint);
-    }
+    setloading(true);
+    const endpoint = `${API_URL}movie/${props.match.params.movieId}?api_key=${API_KEY}&language-en-US`;
+    fetchData(endpoint);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -34,7 +25,6 @@ export default function Movie(props) {
     fetch(endpoint)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res.status_code) {
           setloading(false);
         } else {
@@ -58,14 +48,6 @@ export default function Movie(props) {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      `${props.match.params.movieId}`,
-      JSON.stringify({ movie, directors, actors })
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [actors, directors, loading, movie]);
 
   return (
     <div className="rmdb-movie">

@@ -23,18 +23,9 @@ export default function Home() {
   const [searchTerm, setsearchTerm] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("homeState")) {
-      setLoading(false);
-      const state = JSON.parse(localStorage.getItem("homeState"));
-      setmovies(state.movies);
-      settotalPages(state.totalPages);
-      setheroImage(state.heroImage);
-      setcurrentPage(state.currentPage);
-    } else {
-      setLoading(true);
-      const endpoint = `${API_URL}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
-      fetchData(endpoint);
-    }
+    setLoading(true);
+    const endpoint = `${API_URL}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
+    fetchData(endpoint);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
@@ -49,18 +40,6 @@ export default function Home() {
         settotalPages(res.total_pages);
       });
   };
-
-  useEffect(() => {
-    localStorage.setItem(
-      "homeState",
-      JSON.stringify({
-        movies,
-        heroImage,
-        currentPage,
-        totalPages,
-      })
-    );
-  }, [movies, currentPage, totalPages, heroImage]);
 
   const loadMoreItems = () => {
     let endpoint = "";
