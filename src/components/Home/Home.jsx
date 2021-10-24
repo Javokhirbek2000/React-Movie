@@ -24,6 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     if (localStorage.getItem("homeState")) {
+      setLoading(false);
       const state = JSON.parse(localStorage.getItem("homeState"));
       setmovies(state.movies);
       settotalPages(state.totalPages);
@@ -35,7 +36,7 @@ export default function Home() {
       fetchData(endpoint);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [loading]);
 
   const fetchData = (endpoint, isNew) => {
     fetch(endpoint)
