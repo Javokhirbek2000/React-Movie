@@ -22,7 +22,6 @@ export default function Movie(props) {
       setmovie(state.movie);
       setactors(state.actors);
       setdirectors(state.directors);
-      setloading(state.loading);
     } else {
       setloading(true);
       const endpoint = `${API_URL}movie/${props.match.params.movieId}?api_key=${API_KEY}&language-en-US`;
@@ -63,7 +62,7 @@ export default function Movie(props) {
   useEffect(() => {
     localStorage.setItem(
       `${props.match.params.movieId}`,
-      JSON.stringify({ loading, movie, directors, actors })
+      JSON.stringify({ movie, directors, actors })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actors, directors, loading, movie]);

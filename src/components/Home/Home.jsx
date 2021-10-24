@@ -25,7 +25,6 @@ export default function Home() {
   useEffect(() => {
     if (localStorage.getItem("homeState")) {
       const state = JSON.parse(localStorage.getItem("homeState"));
-      setLoading(state.loading);
       setmovies(state.movies);
       settotalPages(state.totalPages);
       setheroImage(state.heroImage);
@@ -56,12 +55,11 @@ export default function Home() {
       JSON.stringify({
         movies,
         heroImage,
-        loading,
         currentPage,
         totalPages,
       })
     );
-  }, [movies, currentPage, totalPages, heroImage, loading]);
+  }, [movies, currentPage, totalPages, heroImage]);
 
   const loadMoreItems = () => {
     let endpoint = "";
@@ -80,7 +78,6 @@ export default function Home() {
   };
 
   const searchItems = (searchTerm) => {
-    console.log(searchTerm);
     let endpoint = "";
     setLoading(true);
 
