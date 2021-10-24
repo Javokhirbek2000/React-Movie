@@ -7,7 +7,6 @@ import FourColGrid from "../elements/FourColGrid/FourColGrid";
 import Actor from "../elements/Actor/Actor";
 import Spinner from "../elements/Spinner/Spinner";
 import "./Movie.css";
-import FontAwesome from "react-fontawesome";
 
 export default function Movie(props) {
   const [movie, setmovie] = useState(null);
@@ -29,6 +28,7 @@ export default function Movie(props) {
       const endpoint = `${API_URL}movie/${props.match.params.movieId}?api_key=${API_KEY}&language-en-US`;
       fetchData(endpoint);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = (endpoint) => {
@@ -57,6 +57,7 @@ export default function Movie(props) {
         setdirectors(directors);
         setloading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie]);
 
   useEffect(() => {
@@ -64,6 +65,7 @@ export default function Movie(props) {
       `${props.match.params.movieId}`,
       JSON.stringify({ loading, movie, directors, actors })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actors, directors, loading, movie]);
 
   return (

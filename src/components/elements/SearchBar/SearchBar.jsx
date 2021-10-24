@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import FontAwesome from "react-fontawesome";
 import "./SearchBar.css";
 
 export default function SearchBar(props) {
   const [value, setValue] = useState("");
-  const [timeout, settimeout] = useState(null);
   return (
     <div className="rmdb-searchbar">
       <div className="rmdb-searchbar-content">

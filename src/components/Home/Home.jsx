@@ -35,6 +35,7 @@ export default function Home() {
       const endpoint = `${API_URL}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
       fetchData(endpoint);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = (endpoint, isNew) => {
