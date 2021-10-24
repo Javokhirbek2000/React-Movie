@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     setLoading(true);
-    const endpoint = `${API_URL}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
     fetchData(endpoint);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -46,7 +46,7 @@ export default function Home() {
     setLoading(true);
 
     if (searchTerm === "") {
-      endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${
+      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${
         currentPage + 1
       }`;
     } else {
