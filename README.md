@@ -4,7 +4,7 @@ This is an react movie app built with the help of open API tv mvdb.
 
 ## Captures from ready page
 
-![image](https://user-images.githubusercontent.com/66296722/138633780-b88bdaf3-d1d6-437a-b342-2dc5b53d3426.png)
+![image](https://github.com/Javokhirbek2000/React-Movie/blob/master/screenshot-reactive-movies.netlify.app-2021.10.29-00_14_32.png)
 Simply, press shown keys on the keeyboard, and make a fantastic music
 
 ## Deployment
